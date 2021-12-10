@@ -4,9 +4,16 @@ const URL="https://fabulous-zany-saguaro.glitch.me/movies"
 // FETCH REQUEST
 // Get the array of movie objects and send to the render function
 let getmovies = () => {
-    return fetch(URL).then(resp => resp.json()).then(data => rendermovies(data)).catch(err => console.error(err));
+    return fetch(URL)
+        .then(resp => resp.json())
+        .then(data => {
+            rendermovies(data);
+            console.log(data);
+        })
+        .catch(err => console.error(err));
 }
 getmovies();
+console.log(getmovies());
 // RENDER FUNCTION
 // Take each movie (object) and turn each attribute into HTML Elements for display
 const rendermovies=(movies)=> {
@@ -17,11 +24,16 @@ const rendermovies=(movies)=> {
         // Create a new "Movie" Div, with nested divs for each listed attribute
         moviesHTML+='<div class="movie">'+
         '<div class="title">' + movie.title + '</div>'+
+        '<img class="poster" src="' + movie.poster + '">'+
         '<div class="year"> Released: ' + movie.year + '</div>'+
-        '<div class="director"> Director' + movie.director + '</div>'+
+        '<div class="director"> Directed by ' + movie.director + '</div>'+
         '<div class="rating"> Rating: ' + movie.rating + '</div>'+
         '<div class="actors"> Starring: ' + movie.actors + '</div>'+
-
+        // EDIT & DELETE BUTTONS
+        // Rendered with the particular movie ID, this allows targeting of the class "edit-btn" or "delete-btn"
+        // for simplified event function, while still allowing *this* particular movie to be targeted to PATCH or DELETE
+        '<button class="edit-btn" value="' + movie.id + '">Edit</button>' +
+        '<button class="delete-btn" value="' + movie.id + '">Delete</button>' +
         // '<div class="title">'+ movie.  '</div>+
         '</div>'
     }
