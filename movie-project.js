@@ -5,6 +5,7 @@ let gitmovies = () => {
 }
 gitmovies().then(data=>rendermovies(data));
 gitmovies().then(data=>console.log(data));
+
 const rendermovies=(movies)=> {
     let moviesHTML= "";
     for(let movie of movies) {
@@ -20,3 +21,7 @@ const rendermovies=(movies)=> {
     }
     $('#movies').html(moviesHTML)
 }
+
+$('#add-movie').click( => {
+   // let newMovie =
+})
