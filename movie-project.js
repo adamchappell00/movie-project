@@ -1,9 +1,9 @@
-const URL="https://fabulous-zany-saguaro.glitch.me/movies"
+const URL="https://fabulous-zany-saguaro.glitch.me/movies";
 
 
 // FETCH REQUEST
 // Get the array of movie objects and send to the render function
-let getmovies = () => {
+const getmovies = () => {
     return fetch(URL)
         .then(resp => resp.json())
         .then(data => {
@@ -25,7 +25,7 @@ const rendermovies=(movies)=> {
         moviesHTML+='<div class="movie">'+
         
         '<div class="title">' + movie.title + '</div>'+
-        '<img class="poster" src="' + movie.poster + '">'+
+        '<img class="poster" src="' + movie.poster + '" alt="a movie poster">'+
         '<div class="year"> Released: ' + movie.year + '</div>'+
         '<div class="director"> Directed by ' + movie.director + '</div>'+
         '<div class="rating"> Rating: ' + movie.rating + '</div>'+
@@ -41,11 +41,14 @@ const rendermovies=(movies)=> {
     }
     // Set the HTML of the target to the given string of elements & data.
     $('#movies').html(moviesHTML);
+    // EDIT CLICK FUNCTION
+    $('.edit-btn').click(function (){
+        populateEdit($(this).data("id"));
+    });
+    // DELETE CLICK FUNCTION
     $('.delete-btn').click(function (){
-        let buttonvalue = $(this).data("id");
-        console.log(buttonvalue)
-        alert("hello")
-    })
+        deleteMovie($(this).data("id"));
+    });
 }
 
 // FORM SUBMISSION: ADD FUNCTION
@@ -57,9 +60,41 @@ $('#add-movie').click(function(e){
    let newMovie = {title, rating};
    createMovie(newMovie);
 });
+// FORM POPULATE: EDIT FUNCTION
+// Takes the movie ID from an edit-button and populates the edit form with the current data for that movie
+const populateEdit = (movieID) => {
+    // First, get the information for that movie ID
+    fetch(`${URL}/${movieID}`)
+        .then(resp => resp.json())
+        // Take the movie attributes and set the values within the edit form to match the value of each attribute
+        .then(movie =>{
+            $('#edit-title').val(movie.title);
+            $('#edit-release').val(movie.year);
+            $('#edit-director').val(movie.director);
+            $('#edit-rating').val(movie.rating);
+            $('#edit-actors').val(movie.actors);
+            $('#edit-genre').val(movie.genre);
+            $('#edit-plot').val(movie.plot);
+        })
+        .catch(err => console.error(err));
+}
+// FORM SUBMISSION: EDIT FUNCTION
+// On click of "Apply" Button, will create an object with the inputs on the edit form and send to the editMovie() function
+$('#edit-apply').click(function(e){
+    e.preventDefault();
+    let title = $('#edit-title').val();
+    let year = $('#edit-release').val();
+    let director = $('#edit-director').val();
+    let rating = $('#edit-rating').val();
+    let actors = $('#edit-actors').val();
+    let genre = $('#edit-genre').val();
+    let plot = $('#edit-plot').val();
+    let editedMovie = {title, director, year, rating, actors, genre, plot};
+    editMovie(editedMovie);
+});
 // POST REQUEST
 // Takes in the new movie and uses POST to add it to the JSON file
-let createMovie = (movie) => {
+const createMovie = (movie) => {
     let options = {
         method: 'POST',
         headers: {'Content-Type': 'application/json'},
@@ -68,20 +103,23 @@ let createMovie = (movie) => {
     // after posting, getMovies is called again to update the list
     fetch(URL, options).then(resp => resp.json()).then(getmovies()).catch(err => console.error(err));
 }
-let deleteMovie = (movieid) => {
+// PATCH REQUEST
+// Takes the movie from the Edit Form and uses PATCH to change the values of it's attributes in the JSON file
+const editMovie = (movie) => {
+    let movieID = movie.id;
+    let options = {
+        method: 'PATCH',
+        headers: {'Content-Type': 'application/json'},
+        body: JSON.stringify(movie)
+    }
+    return  fetch(`${URL}/${movieID}`, options).then(resp => resp.json()).then(getmovies()).catch(err => console.error(err));
+}
+// DELETE REQUEST
+// Takes the movie ID from a delete-button and uses DELETE to to remove it from the JSON file
+const deleteMovie = (movieID) => {
     let options = {
         method: 'DELETE',
         headers: {'Content-Type': 'application/json'},
     }
-   return  fetch(`${URL}/${movieid}`, options).then(resp => resp.json()).then(getmovies()).catch(err => console.error(err));
+   return  fetch(`${URL}/${movieID}`, options).then(resp => resp.json()).then(getmovies()).catch(err => console.error(err));
 }
-$('.delete-btn').click(function (){
-    let buttonvalue = $(this).data("id");
-    console.log(buttonvalue)
-alert("hello")
-})
-
-// deleteMovie(5);
-//     $(document).ready(function(){
-// }
-//     $("#edit-btn").prop("value", "Input New Text");
