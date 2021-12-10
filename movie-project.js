@@ -11,17 +11,17 @@ const rendermovies=(movies)=> {
     for(let movie of movies) {
         moviesHTML+='<div class="movie">'+
       '<div class="title">'+ movie.title + '</div>'+
-            '<div class="title">'+ movie.year + '</div>'+
+            '<div class="year">'+ movie.year + '</div>'+
             '<div class="director">'+ movie.director + '</div>'+
 
             '<div class="actors">'+ movie.actors + '</div>'+
             '<div class="rating">'+ movie.rating + '</div>'+
-            // '<div class="title">'+ movie.  '</div>+
+            '<div class="plot">'+ movie.plot  '</div>+
         '</div>'
     }
     $('#movies').html(moviesHTML)
 }
 
-$('#add-movie').click( => {
-   // let newMovie =
-})
+// $('#add-movie').click( => {
+//    // let newMovie =
+// })
