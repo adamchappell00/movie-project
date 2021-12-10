@@ -30,7 +30,7 @@ const rendermovies=(movies)=> {
         '<div class="director"> Directed by ' + movie.director + '</div>'+
         '<div class="rating"> Rating: ' + movie.rating + '</div>'+
         '<div class="actors"> Starring: ' + movie.actors + '</div>'+
-        '<div class="plot">'+ movie.plot + '</div> +
+        '<div class="plot">'+ movie.plot + '</div>' +
         // EDIT & DELETE BUTTONS
         // Rendered with the particular movie ID, this allows targeting of the class "edit-btn" or "delete-btn"
         // for simplified event function, while still allowing *this* particular movie to be targeted to PATCH or DELETE
