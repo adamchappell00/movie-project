@@ -23,12 +23,14 @@ const rendermovies=(movies)=> {
     for(let movie of movies) {
         // Create a new "Movie" Div, with nested divs for each listed attribute
         moviesHTML+='<div class="movie">'+
+        
         '<div class="title">' + movie.title + '</div>'+
         '<img class="poster" src="' + movie.poster + '">'+
         '<div class="year"> Released: ' + movie.year + '</div>'+
         '<div class="director"> Directed by ' + movie.director + '</div>'+
         '<div class="rating"> Rating: ' + movie.rating + '</div>'+
         '<div class="actors"> Starring: ' + movie.actors + '</div>'+
+        '<div class="plot">'+ movie.plot + '</div> +
         // EDIT & DELETE BUTTONS
         // Rendered with the particular movie ID, this allows targeting of the class "edit-btn" or "delete-btn"
         // for simplified event function, while still allowing *this* particular movie to be targeted to PATCH or DELETE
@@ -40,6 +42,7 @@ const rendermovies=(movies)=> {
     // Set the HTML of the target to the given string of elements & data.
     $('#movies').html(moviesHTML);
 }
+
 // FORM SUBMISSION: ADD FUNCTION
 // On click of "Add" Button, will create a new movie object and send to the createMovie() function
 $('#add-movie').click(function(e){
@@ -60,3 +63,4 @@ let createMovie = (movie) => {
     // after posting, getMovies is called again to update the list
     fetch(URL, options).then(resp => resp.json()).then(getmovies()).catch(err => console.error(err));
 }
+
