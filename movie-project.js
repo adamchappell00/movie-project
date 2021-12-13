@@ -13,7 +13,7 @@ const getmovies = () => {
         .catch(err => console.error(err));
 }
 getmovies();
-console.log(getmovies());
+
 // RENDER FUNCTION
 // Take each movie (object) and turn each attribute into HTML Elements for display
 const rendermovies=(movies)=> {
@@ -75,6 +75,7 @@ const populateEdit = (movieID) => {
             $('#edit-actors').val(movie.actors);
             $('#edit-genre').val(movie.genre);
             $('#edit-plot').val(movie.plot);
+            $('#movie-id').val(movieID);
         })
         .catch(err => console.error(err));
 }
@@ -83,13 +84,15 @@ const populateEdit = (movieID) => {
 $('#edit-apply').click(function(e){
     e.preventDefault();
     let title = $('#edit-title').val();
+    let rating = $('#edit-rating').val();
     let year = $('#edit-release').val();
     let director = $('#edit-director').val();
-    let rating = $('#edit-rating').val();
     let actors = $('#edit-actors').val();
     let genre = $('#edit-genre').val();
     let plot = $('#edit-plot').val();
-    let editedMovie = {title, director, year, rating, actors, genre, plot};
+    let id = $('#movie-id').val();
+    let editedMovie = {id, title, rating, year, genre, director,  actors, plot};
+    console.log(editedMovie);
     editMovie(editedMovie);
 });
 // POST REQUEST
@@ -106,13 +109,12 @@ const createMovie = (movie) => {
 // PATCH REQUEST
 // Takes the movie from the Edit Form and uses PATCH to change the values of it's attributes in the JSON file
 const editMovie = (movie) => {
-    let movieID = movie.id;
     let options = {
         method: 'PATCH',
         headers: {'Content-Type': 'application/json'},
         body: JSON.stringify(movie)
     }
-    return  fetch(`${URL}/${movieID}`, options).then(resp => resp.json()).then(getmovies()).catch(err => console.error(err));
+    return  fetch(`${URL}/${movie.id}`, options).then(resp => resp.json()).then(getmovies()).catch(err => console.error(err));
 }
 // DELETE REQUEST
 // Takes the movie ID from a delete-button and uses DELETE to to remove it from the JSON file
