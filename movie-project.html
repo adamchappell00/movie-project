@@ -22,9 +22,22 @@
         </li>
     </ul>
 </div>
-<!-- -->
+<!-- Header-Title with BG Style and Sub-Navigation for Forms -->
 <header>
-    <h1>Regulus Movie Database</h1>
+    <div>
+        <h1>Regulus Movie Database</h1>
+    </div>
+    <div id="sub-navigation">
+        <div class="nav-tab" id="search-tab">
+            Search <i class="fas fa-arrow-circle-right"></i>
+        </div>
+        <div class="nav-tab" id="add-tab">
+            Add <i class="fas fa-arrow-circle-right"></i>
+        </div>
+        <div class="nav-tab" id="edit-tab">
+            Edit <i class="fas fa-arrow-circle-right"></i>
+        </div>
+    </div>
 </header>
 
 <!-- Form to Add a Movie, Starting with Title and Rating Only-->
@@ -38,32 +51,37 @@
         <button id="add-movie">Add</button>
     </form>
 </div>
+<!-- Form to Edit a Movie, with inputs for each displayed attribute-->
 <div id="edit-form">
     <label for="edit-title">Title:</label>
-    <input type="text" id="edit-title" placeholder="">
+        <input type="text" id="edit-title" placeholder="">
     <label for="edit-release">release:</label>
-    <input type="text" id="edit-release" placeholder="">
+        <input type="text" id="edit-release" placeholder="">
     <label for="edit-director">director:</label>
-    <input type="text" id="edit-director" placeholder="">
+        <input type="text" id="edit-director" placeholder="">
     <label for="edit-rating">rating:</label>
-    <input  type="number" id="edit-rating"  min="1" max="5" value="1">
+        <input  type="number" id="edit-rating"  min="1" max="5" value="1">
     <label for="edit-actors">actors:</label>
-    <input type="text" id="edit-actors" placeholder="">
+        <input type="text" id="edit-actors" placeholder="">
     <label for="edit-plot">plot:</label>
-    <input type="text" id="edit-plot" placeholder="">
+        <input type="text" id="edit-plot" placeholder="">
     <label for="edit-genre">genre:</label>
-    <input type="text" id="edit-genre" placeholder="">
+        <input type="text" id="edit-genre" placeholder="">
+    <!-- MOVIE ID VALUE-->
+    <!--Hidden input that allows us to pass the movie ID through the form functions-->
     <input type="hidden" id="movie-id" value="">
     <button id="edit-apply">Apply Changes</button>
 </div>
 <!--Target Container for Displaying movies-->
 <div id="movies">
-    <div id="load">
-        <div>G</div><div>N</div><div>I</div><div>D</div><div>A</div><div>O</div><div>L</div>
-        <div>...</div>
-        <div>S</div><div>E</div><div>I</div><div>V</div><div>O</div><div>M</div>
+    <!--Container for Loading Message-->
+    <!--Currently Displays "Loading-Movies...", needs to remain in "#movies" div to be removed when loading is complete -->
+    <div class="container">
+        <div class="loading">
+            <div>L</div><div>o</div><div>a</div><div>d</div><div>i</div><div>n</div><div>g</div><div>-</div>
+            <div>M</div><div>o</div><div>v</div><div>i</div><div>e</div><div>s</div><div>.</div><div>.</div><div>.</div>
+        </div>
     </div>
-
 </div>
 
 <!-- Jquery Source -->
