@@ -1,5 +1,5 @@
+// Target URL for Glitch
 const URL= "https://fabulous-zany-saguaro.glitch.me/movies";
-
 
 // FETCH REQUEST
 // Get the array of movie objects and send to the render function
@@ -12,6 +12,8 @@ const getmovies = () => {
         })
         .catch(err => console.error(err));
 }
+// Initial Fetch Request that retreives the data and renders it is Delayed in order to show off our loading animation
+// This setTimeout is instructor approved without tears
 setTimeout(getmovies, 4000);
 
 // RENDER FUNCTION
@@ -23,19 +25,19 @@ const rendermovies=(movies)=> {
     for(let movie of movies) {
         // Create a new "Movie" Div, with nested divs for each listed attribute
         moviesHTML+='<div class="movie">'+
-        '<div class="title">' + movie.title + '</div>'+
-        '<img class="poster" src="' + movie.poster + '" alt="a movie poster">'+
-        '<div class="year"> Released: ' + movie.year + '</div>'+
-        '<div class="director"> Directed by ' + movie.director + '</div>'+
-        '<div class="rating"> Rating: ' + movie.rating + '</div>'+
-        '<div class="actors"> Starring: ' + movie.actors + '</div>'+
-        '<div class="plot">'+ movie.plot + '</div>' +
+            '<div class="title">' + movie.title + '</div>'+
+            '<img class="poster" src="' + movie.poster + '" alt="a movie poster">'+
+            '<div class="year"> Released: ' + movie.year + '</div>'+
+            '<div class="director"> Directed by ' + movie.director + '</div>'+
+            '<div class="rating"> Rating: ' + movie.rating + '</div>'+
+            '<div class="actors"> Starring: ' + movie.actors + '</div>'+
+            '<div class="plot">'+ movie.plot + '</div>' +
         // EDIT & DELETE BUTTONS
         // Rendered with the particular movie ID, this allows targeting of the class "edit-btn" or "delete-btn"
         // for simplified event function, while still allowing *this* particular movie to be targeted to PATCH or DELETE
         '<button class="edit-btn"  data-id="' + movie.id + '">Edit</button>' +
         '<button class="delete-btn" data-id="' + movie.id + '">Delete</button>' +
-        // '<div class="title">'+ movie.  '</div>+
+        // Closing individual "movie" div
         '</div>'
     }
     // Set the HTML of the target to the given string of elements & data.

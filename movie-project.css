@@ -60,7 +60,33 @@ a {
 button{
     margin: .25em;
 }
+#sub-navigation{
+    margin: 0;
+    padding: 0;
+    background-color: blue;
+    width: 10%;
+    border-top-right-radius: 8px;
+    border-bottom-right-radius: 8px;
+}
 
+.nav-tab{
+    display: flex;
+    justify-content: space-between;
+    background-color: blue;
+    font-size: 24px;
+    margin: 0 0 .25em 0;
+    padding: .25em;
+    color: white;
+}
+.nav-tab:nth-child(1){
+    border-top-right-radius: 8px;
+}
+.nav-tab:nth-child(3){
+    border-bottom-right-radius: 8px;
+}
+.nav-tab:hover{
+    border-right: 8px Solid Red;
+}
 #movies{
     display: flex;
     justify-content: space-evenly;
@@ -115,7 +141,6 @@ button{
 /* LOADING DIV ONLY BELOW */
 /* Takes the contained divs, which spell out the loading message, and delays their animation */
 /* By being placed inside the "movies" div, when it loads, the html contents are reset, so the loading screen is removed */
-
 .container {
     margin-top: 2em;
     height: 100vh;
@@ -127,16 +152,18 @@ button{
     display: flex;
     flex-direction: row;
 }
+/* Setting the Style for Each displayed div/letter in the loading message*/
 .loading > div {
     font-size: 88px;
     font-weight: normal;
     letter-spacing: 4px;
     text-transform: uppercase;
-    color: #fec468;
+    color: #FEC468;
     animation-name: bounce;
     animation-duration: 1.5s;
     animation-iteration-count: infinite;
 }
+/* Delaying each letter by 0.1 second behind the previous letter to create the "wave" appearance */
 .loading div:nth-child(2) {
     animation-delay: .1s;
 }
@@ -185,8 +212,6 @@ button{
 .loading div:nth-child(17) {
     animation-delay: 1.6s;
 }
-
-
 @keyframes bounce {
     0% {
         transform: translateY(0px)
