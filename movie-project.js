@@ -30,6 +30,7 @@ const rendermovies=(movies)=> {
             '<div class="year"> Released: ' + movie.year + '</div>'+
             '<div class="director"> Directed by ' + movie.director + '</div>'+
             '<div class="rating"> Rating: ' + movie.rating + '</div>'+
+            '<div class="genre"> Genre: '+ movie.genre +'</div>'+
             '<div class="actors"> Starring: ' + movie.actors + '</div>'+
             '<div class="plot">'+ movie.plot + '</div>' +
         // EDIT & DELETE BUTTONS

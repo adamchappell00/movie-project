@@ -3,8 +3,6 @@
     transition: 300ms;
 }
 body {
-    height: 100%;
-    width: 100%;
     background: #e9e9e9;
     font-family:  fantasy Copperplate;
     font-weight: 400;
@@ -43,7 +41,7 @@ ul {
     list-style-type: none;
 }
 h1 {
-    margin: 8px;
+    margin: 0;
     width: 100%;
     text-align: center;
     font-size: 54px;
@@ -127,13 +125,12 @@ button{
     font-weight: bold;
     text-align: center;
 }
-.actors, .rating {
+.actors, .rating, .genre {
     display: block;
     margin: .25em;
     padding: 0.25em;
     font-size: 15px;
     text-align: center;
-
 }
 .plot {
     margin: .25em;
