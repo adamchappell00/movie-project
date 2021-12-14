@@ -52,21 +52,33 @@ h1 {
     font-family: sans, sans-serif;
     color: brown;
 }
+h2 {
+    margin: .2em auto;
+}
 a {
     text-decoration: none;
     color: inherit;
     padding: 1em;
 }
+label{
+    margin: .25em;
+    font-size: 18px;
+}
+input {
+    margin: .25em;
+    font-size: 15px;
+}
 button{
     margin: .25em;
+    font-size: 14px;
+    border-radius: 4px;
 }
 #sub-navigation{
     margin: 0;
     padding: 0;
     background-color: blue;
     width: 10%;
-    border-top-right-radius: 8px;
-    border-bottom-right-radius: 8px;
+
 }
 
 .nav-tab{
@@ -86,6 +98,25 @@ button{
 }
 .nav-tab:hover{
     border-right: 8px Solid Red;
+}
+#form-container{
+    display: flex;
+    flex-direction: row;
+}
+.form-sub{
+    display: inline;
+    border-top-right-radius: 8px;
+    border-bottom-right-radius: 8px;
+}
+#add-form{
+    margin-top: 12px;
+    margin-bottom: 12px;
+    padding: .25em;
+    width: 496px;
+    background-color: #6ABCEA;
+}
+.split{
+    display: inline;
 }
 #movies{
     display: flex;

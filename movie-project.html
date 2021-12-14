@@ -27,45 +27,51 @@
     <div>
         <h1>Regulus Movie Database</h1>
     </div>
-    <div id="sub-navigation">
-        <div class="nav-tab" id="search-tab">
-            Search <i class="fas fa-arrow-circle-right"></i>
+    <div id="form-container">
+        <div class="form-sub" id="sub-navigation">
+            <div class="nav-tab" id="search-tab">
+                Search <i class="fas fa-arrow-circle-right"></i>
+            </div>
+            <div class="nav-tab" id="add-tab">
+                Add <i class="fas fa-arrow-circle-right"></i>
+            </div>
+            <div class="nav-tab" id="edit-tab">
+                Edit <i class="fas fa-arrow-circle-right"></i>
+            </div>
         </div>
-        <div class="nav-tab" id="add-tab">
-            Add <i class="fas fa-arrow-circle-right"></i>
-        </div>
-        <div class="nav-tab" id="edit-tab">
-            Edit <i class="fas fa-arrow-circle-right"></i>
+        <!-- Form to Add a Movie, Starting with Title and Rating Only-->
+        <div class="form-sub" id="add-form">
+            <h2>Add a Movie</h2>
+            <div class="split">
+                <label for="add-title">Title:</label>
+                <input type="text" id="add-title" placeholder="Type Title Here...">
+            </div>
+            <div class="split">
+                <label for="add-rating">Rating:</label>
+                <input type="number" id="add-rating" name="rating" min="1" max="5" value="1">
+            </div>
+            <button id="add-movie">Add Title</button>
         </div>
     </div>
+
 </header>
 
-<!-- Form to Add a Movie, Starting with Title and Rating Only-->
-<div id="add-form">
-    <h3>Add a Movie</h3>
-    <form>
-        <label for="add-title">Title:</label>
-            <input type="text" id="add-title" placeholder="Type Title Here...">
-        <label for="add-rating">Rating:</label>
-            <input type="number" id="add-rating" name="rating" min="1" max="5" value="1">
-        <button id="add-movie">Add</button>
-    </form>
-</div>
+
 <!-- Form to Edit a Movie, with inputs for each displayed attribute-->
 <div id="edit-form">
     <label for="edit-title">Title:</label>
         <input type="text" id="edit-title" placeholder="">
-    <label for="edit-release">release:</label>
+    <label for="edit-release">Released:</label>
         <input type="text" id="edit-release" placeholder="">
-    <label for="edit-director">director:</label>
+    <label for="edit-director">Director:</label>
         <input type="text" id="edit-director" placeholder="">
-    <label for="edit-rating">rating:</label>
+    <label for="edit-rating">Rating:</label>
         <input  type="number" id="edit-rating"  min="1" max="5" value="1">
-    <label for="edit-actors">actors:</label>
+    <label for="edit-actors">Actors:</label>
         <input type="text" id="edit-actors" placeholder="">
-    <label for="edit-plot">plot:</label>
+    <label for="edit-plot">Summary:</label>
         <input type="text" id="edit-plot" placeholder="">
-    <label for="edit-genre">genre:</label>
+    <label for="edit-genre">Genre:</label>
         <input type="text" id="edit-genre" placeholder="">
     <!-- MOVIE ID VALUE-->
     <!--Hidden input that allows us to pass the movie ID through the form functions-->
