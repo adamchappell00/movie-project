@@ -56,7 +56,23 @@
             deleteMovie($(this).data("id"));
         });
     }
-
+// SUB-NAVIGATION: FORM CONTROL
+// Each Tab toggles its given form, as well as the tab's icon for a left or right arrow.
+$('#search-tab').click(() => {
+    $('#search-form').toggleClass('hide');
+    $('#search-right').toggleClass('hide');
+    $('#search-left').toggleClass('hide');
+});
+$('#add-tab').click(() => {
+    $('#add-form').toggleClass('hide');
+    $('#add-right').toggleClass('hide');
+    $('#add-left').toggleClass('hide');
+});
+$('#edit-tab').click(() => {
+    $('#edit-form').toggleClass('hide');
+    $('#edit-right').toggleClass('hide');
+    $('#edit-left').toggleClass('hide');
+});
 // FORM SUBMISSION: ADD FUNCTION
 // On click of "Add" Button, will create a new movie object from the return of the OMDB API
 // and send the new object to the createMovie() function, which posts it to our db

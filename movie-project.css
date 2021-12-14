@@ -1,44 +1,16 @@
 * {
-    -webkit-transition: 300ms;
-    transition: 300ms;
+
 }
 body {
-    background: #e9e9e9;
-    font-family:  fantasy Copperplate;
+
+    font-family: Tahoma, Arial, sans-serif;
     font-weight: 400;
     font-size: 14px;
-    color: #010b26;
-    margin: 0;
-}
-.nav {
-    background-color: lightgrey;
-    height: 54px;
-}
-.navbar-list {
-    display: flex;
-    justify-content: space-evenly;
-    align-items: center;
-    list-style: none;
-    padding: 0;
-    margin: 0;
-}
-.nav a {
-    font-size: 18px;
-    text-decoration: none;
     color: black;
-    border-radius: 8px;
-}
-a:hover{
-    background-color: dimgray;
-    color: #6ABCEA;
-}
-#icon-film{
-    font-family: "Corsiva Hebrew", cursive;
-    font-size: 28px;
-    padding: 0.5em;
-}
-ul {
-    list-style-type: none;
+    margin: 0;
+    background-image: url("/hidden/theatre.png");
+    background-repeat: repeat-y;
+    background-size: contain;
 }
 h1 {
     margin: 0;
@@ -53,7 +25,11 @@ h1 {
     color: brown;
 }
 h2 {
-    margin: .2em auto;
+    margin: .2em;
+    padding: .2em;
+}
+ul {
+    list-style-type: none;
 }
 a {
     text-decoration: none;
@@ -73,14 +49,25 @@ button{
     font-size: 14px;
     border-radius: 4px;
 }
-#sub-navigation{
-    margin: 0;
-    padding: 0;
-    background-color: blue;
-    width: 10%;
-
+.nav {
+    background-color: lightgrey;
+    height: 54px;
 }
-
+.navbar-list {
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+.nav a {
+    font-size: 18px;
+    text-decoration: none;
+    color: black;
+    border-radius: 8px;
+}
+/* NAV TAB Display */
 .nav-tab{
     display: flex;
     justify-content: space-between;
@@ -99,6 +86,24 @@ button{
 .nav-tab:hover{
     border-right: 8px Solid Red;
 }
+a:hover{
+    background-color: dimgray;
+    color: #6ABCEA;
+}
+#icon-film{
+    font-family: "Corsiva Hebrew", cursive;
+    font-size: 28px;
+    padding: 0.5em;
+}
+#sub-navigation{
+    margin: 0;
+    padding: 0;
+    background-color: blue;
+    width: 10%;
+
+}
+
+/* Forms Display & Styles */
 #form-container{
     display: flex;
     flex-direction: row;
@@ -108,21 +113,37 @@ button{
     border-top-right-radius: 8px;
     border-bottom-right-radius: 8px;
 }
-#add-form{
-    margin-top: 12px;
-    margin-bottom: 12px;
+.form-sub{
+    margin-top: 8px;
+    margin-bottom: 8px;
     padding: .25em;
-    width: 496px;
+    width: 624px;
     background-color: #6ABCEA;
+}
+#edit-form{
+    display: flex;
+    flex-direction: row;
 }
 .split{
     display: inline;
 }
+.column{
+    display: flex;
+    flex-direction: column;
+
+}
+.column > div {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+}
+/* Movies: Base Container */
 #movies{
     display: flex;
     justify-content: space-evenly;
     flex-wrap: wrap;
 }
+/* Movie: Each individual film display */
 .movie {
     background: #ffffff;
     box-shadow: 0 6px 18px rgba(0, 0, 0, 0.1);
@@ -137,7 +158,7 @@ button{
     -webkit-transform: scale(1.03);
     transform: scale(1.03);
     box-shadow: 0 10px 25px rgba(0, 0, 0, 0.08);
-
+    transition: 300ms;
 }
 .title {
     background-color: lightgrey;
@@ -170,41 +191,9 @@ button{
     padding: 0.25em;
     text-align: center;
 }
-
-
 .hide {
-    visibility: hidden;
+    display: none !important;
 }
-#edit-form {
-    /*background-color: #777;*/
-    color: black;
-    cursor: pointer;
-    padding: 18px;
-    width: 100%;
-    border: none;
-    text-align: left;
-    outline: none;
-    font-size: 15px;
-    visibility: visible;
-    transition: 1s linear;
-    transform-origin: left ;
-    list-style-type: square;
-}
-
-.active, #edit-form:hover {
-    visibility: visible;
-    color: white;
-    transform: rotateY(180deg);
-    background: blueviolet;
-    list-style-type: square;
-}
-.content {
-    padding: 0 18px;
-    display: none;
-    overflow: hidden;
-    background-color: #f1f1f1;
-}
-
 /* LOADING DIV ONLY BELOW */
 /* Takes the contained divs, which spell out the loading message, and delays their animation */
 /* By being placed inside the "movies" div, when it loads, the html contents are reset, so the loading screen is removed */
